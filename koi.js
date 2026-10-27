@@ -348,7 +348,8 @@
 		acc += dt;
 		if (acc >= 1 / FPS) {
 			for (const f of fish) step(f, acc);
-			draw(now / 1000);
+			// skip the expensive ASCII pass while the pond is scrolled out of view
+			if (window.scrollY < H) draw(now / 1000);
 			acc = 0;
 		}
 		requestAnimationFrame(tick);
@@ -372,7 +373,7 @@
 			if (reduced) draw(0);
 		}, 150);
 	});
-	window.addEventListener("pointermove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+	window.addEventListener("pointermove", (e) => { mouse.x = e.pageX; mouse.y = e.pageY; });
 	window.addEventListener("pointerleave", () => { mouse.x = mouse.y = -9999; });
 
 	if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
