@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>George Barnes</title>
+	<meta name="description" content="George Barnes — Computer Science student at the University of Exeter.">
+	<style>
+		:root {
+			--bg: #0b0f14;
+			--fg: #d1d5db;
+			--muted: #6b7280;
+			--accent: #f59e0b;
+		}
+		* { box-sizing: border-box; }
+		html, body { margin: 0; background: var(--bg); color: var(--fg); }
+		body {
+			font: 14px/1.7 ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+		#pond {
+			position: fixed;
+			inset: 0;
+			margin: 0;
+			font: 8px/8px ui-monospace, Menlo, Consolas, monospace;
+			white-space: pre;
+			pointer-events: none;
+			user-select: none;
+			z-index: 0;
+		}
+		#pond .w { color: #e5e7eb; }
+		#pond .o { color: #f59e0b; }
+		#pond .r { color: #ef4444; }
+		#pond .k { color: #4b5563; }
+		main {
+			position: relative;
+			z-index: 1;
+			max-width: 560px;
+			padding: 12vh 24px 80px;
+			margin-left: max(24px, 8vw);
+		}
+		h1 { font-size: 20px; font-weight: 600; margin: 0 0 4px; color: #f3f4f6; }
+		h2 { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 44px 0 12px; }
+		p { margin: 0 0 12px; }
+		.sub { color: var(--muted); margin-bottom: 28px; }
+		a { color: var(--fg); text-decoration: none; border-bottom: 1px solid #374151; transition: color .15s, border-color .15s; }
+		a:hover { color: var(--accent); border-color: var(--accent); }
+		ul { list-style: none; padding: 0; margin: 0; }
+		li { margin-bottom: 14px; }
+		li span { display: block; color: var(--muted); font-size: 13px; }
+		.links a { margin-right: 18px; }
+		.bg-text { background: rgba(11, 15, 20, .72); }
+		@media (max-width: 900px) { #pond { opacity: .35; } }
+	</style>
+</head>
+<body>
+	<pre id="pond" aria-hidden="true"></pre>
+
+	<main>
+		<h1>George Barnes</h1>
+		<p class="sub">Computer Science @ University of Exeter</p>
+
+		<p><span class="bg-text">I'm a final-year CS student who likes building things end to end: full-stack web apps, small ML models, and tools that scratch my own itch.</span></p>
+		<p><span class="bg-text">Looking for software engineering graduate roles starting September 2027.</span></p>
+
+		<h2>Projects</h2>
+		<ul class="bg-text">
+			<li>
+				<a href="https://github.com/GeorgeBarnes06/nexis">nexis</a>
+				<span>Next.js dashboard for Calendar, Gmail and Tasks with a self-built natural-language assistant (fine-tuned DistilBERT for intent + slot filling).</span>
+			</li>
+			<li>
+				<a href="https://github.com/GeorgeBarnes06/strava-dashboard">strava-dashboard</a>
+				<span>Full-stack Strava dashboard (React, Express, MongoDB) comparing pace and heart rate over time.</span>
+			</li>
+			<li>
+				<a href="https://github.com/GeorgeBarnes06/Pneumonia-image-classifier">pneumonia-image-classifier</a>
+				<span>CNN in TensorFlow/Keras classifying paediatric chest X-rays as normal or pneumonia.</span>
+			</li>
+			<li>
+				<a href="https://github.com/GeorgeBarnes06/slate">slate</a>
+				<span>Infinite canvas app (Next.js + Electron) for notes, images, links and code.</span>
+			</li>
+			<li>
+				<a href="https://github.com/GeorgeBarnes06/f1-SpringbootApplication">f1-springboot</a>
+				<span>Spring Boot app for F1 driver, race and championship data.</span>
+			</li>
+		</ul>
+
+		<h2>Elsewhere</h2>
+		<p class="links">
+			<a href="https://github.com/GeorgeBarnes06">GitHub</a>
+		</p>
+	</main>
+
+	<script src="koi.js"></script>
+</body>
+</html>
