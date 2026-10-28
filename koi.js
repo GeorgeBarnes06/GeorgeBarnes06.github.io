@@ -26,7 +26,7 @@
 	const mouse = { x: -9999, y: -9999 };
 
 	/* ---------- varieties ---------- */
-	const WHITE = "#f3f4f6", RED = "#e3342f", ORANGE = "#f59e0b", BLACK = "#111111";
+	const WHITE = "#f3f4f6", RED = "#e3342f", BLACK = "#111111";
 
 	// evenly spaced positions along the body (with a little jitter) so patches never merge
 	function spread(n, from, to) {
@@ -39,26 +39,21 @@
 	function makePattern() {
 		const kind = Math.random();
 		const patches = [];
-		if (kind < 0.45) {
+		if (kind < 0.5) {
 			// kohaku: white with red patches
 			const n = 2 + Math.floor(Math.random() * 2);
 			for (const u of spread(n, 0.03, 0.8)) patches.push({ u, side: rand(-0.5, 0.5), size: rand(0.6, 0.9), color: RED });
 			return { base: WHITE, patches };
 		}
-		if (kind < 0.7) {
+		if (kind < 0.8) {
 			// showa / sanke: white, red and black
 			for (const u of spread(2, 0.05, 0.7)) patches.push({ u, side: rand(-0.5, 0.5), size: rand(0.55, 0.85), color: RED });
 			for (const u of spread(3, 0.2, 0.85)) patches.push({ u, side: rand(-0.8, 0.8), size: rand(0.3, 0.5), color: BLACK });
 			return { base: WHITE, patches };
 		}
-		if (kind < 0.88) {
-			// tancho: white with a single red spot on the head
-			patches.push({ u: 0.08, side: 0, size: 0.95, color: RED });
-			return { base: WHITE, patches };
-		}
-		// orange with white patches
-		for (const u of spread(3, 0.08, 0.85)) patches.push({ u, side: rand(-0.6, 0.6), size: rand(0.6, 0.85), color: WHITE });
-		return { base: ORANGE, patches };
+		// tancho: white with a single red spot on the head
+		patches.push({ u: 0.08, side: 0, size: 0.95, color: RED });
+		return { base: WHITE, patches };
 	}
 
 	/* ---------- layout ---------- */
@@ -207,7 +202,7 @@
 
 	function drawFish(f, t) {
 		const fr = frameOf(f);
-		const finColor = f.pattern.base === ORANGE ? "#fcd34d" : "#e5e7eb";
+		const finColor = "#e5e7eb";
 
 		// pectoral fins
 		const pf = at(fr, 0.22);
