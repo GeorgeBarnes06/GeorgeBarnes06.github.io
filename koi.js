@@ -26,35 +26,38 @@
 	const mouse = { x: -9999, y: -9999 };
 
 	/* ---------- varieties ---------- */
-	const WHITE = "#f3f4f6", RED = "#e3342f", ORANGE = "#f59e0b", BLACK = "#111111", GOLD = "#fbbf24";
+	const WHITE = "#f3f4f6", RED = "#e3342f", ORANGE = "#f59e0b", BLACK = "#111111";
+
+	// evenly spaced positions along the body (with a little jitter) so patches never merge
+	function spread(n, from, to) {
+		const step = (to - from) / n;
+		const out = [];
+		for (let i = 0; i < n; i++) out.push(from + step * (i + rand(0.3, 0.7)));
+		return out;
+	}
 
 	function makePattern() {
 		const kind = Math.random();
 		const patches = [];
-		if (kind < 0.4) {
+		if (kind < 0.45) {
 			// kohaku: white with red patches
-			const n = 2 + Math.floor(Math.random() * 3);
-			for (let i = 0; i < n; i++) patches.push({ u: rand(0.05, 0.75), side: rand(-0.7, 0.7), size: rand(0.6, 1.3), color: RED });
+			const n = 2 + Math.floor(Math.random() * 2);
+			for (const u of spread(n, 0.03, 0.8)) patches.push({ u, side: rand(-0.5, 0.5), size: rand(0.6, 0.9), color: RED });
 			return { base: WHITE, patches };
 		}
-		if (kind < 0.6) {
+		if (kind < 0.7) {
 			// showa / sanke: white, red and black
-			for (let i = 0; i < 3; i++) patches.push({ u: rand(0.05, 0.7), side: rand(-0.6, 0.6), size: rand(0.6, 1.2), color: RED });
-			for (let i = 0; i < 4; i++) patches.push({ u: rand(0.15, 0.85), side: rand(-0.9, 0.9), size: rand(0.25, 0.55), color: BLACK });
+			for (const u of spread(2, 0.05, 0.7)) patches.push({ u, side: rand(-0.5, 0.5), size: rand(0.55, 0.85), color: RED });
+			for (const u of spread(3, 0.2, 0.85)) patches.push({ u, side: rand(-0.8, 0.8), size: rand(0.3, 0.5), color: BLACK });
 			return { base: WHITE, patches };
 		}
-		if (kind < 0.75) {
+		if (kind < 0.88) {
 			// tancho: white with a single red spot on the head
-			patches.push({ u: 0.07, side: 0, size: 0.75, color: RED });
+			patches.push({ u: 0.08, side: 0, size: 0.95, color: RED });
 			return { base: WHITE, patches };
-		}
-		if (kind < 0.9) {
-			// ogon: solid gold/orange
-			patches.push({ u: 0.3, side: 0, size: 0.6, color: GOLD });
-			return { base: ORANGE, patches };
 		}
 		// orange with white patches
-		for (let i = 0; i < 3; i++) patches.push({ u: rand(0.1, 0.8), side: rand(-0.8, 0.8), size: rand(0.5, 1), color: WHITE });
+		for (const u of spread(3, 0.08, 0.85)) patches.push({ u, side: rand(-0.6, 0.6), size: rand(0.6, 0.85), color: WHITE });
 		return { base: ORANGE, patches };
 	}
 
